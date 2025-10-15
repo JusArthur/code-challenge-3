@@ -3,18 +3,24 @@ import express, { Express } from "express";
 
 import userRoutes from "./api/v1/routes/userRoutes";
 import adminRoutes from "./api/v1/routes/adminRoutes";
-import errorHandler from "./api/v1/middlerware/errorHandler";
-
+import errorHandler from "./api/v1/middleware/errorHandler";
+import {
+    accessLogger,
+    errorLogger,
+    consoleLogger,
+} from "./api/v1/middleware/logger";
 
 // initialize the express application
 const app: Express = express();
 
-// Middleware START
+// Logging middleware
+app.use(accessLogger);
+app.use(errorLogger);
+app.use(consoleLogger);
 
 // Ensures incoming body is correctly parsed to JSON, otherwise req.body would be undefined
 app.use(express.json());
 
-// Middleware END
 
 // respond to GET request at endpoint "/" with message
 app.get("/", (req, res) => {

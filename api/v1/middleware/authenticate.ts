@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { DecodedIdToken } from "firebase-admin/auth";
 import { AuthenticationError } from "../errors/errors.ts";
 import { getErrorMessage, getErrorCode } from "../utils/errorUtils.ts";
-import { auth } from "../../../config/firebaseConfig";
+import { auth } from "../../../config/firebaseConfig.ts";
 
 /**
  * Middleware to authenticate a user using Firebase ID token.
