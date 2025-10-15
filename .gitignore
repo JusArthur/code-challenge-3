@@ -3,6 +3,6 @@ dist/
  
 .vscode/
  
-# serviceAccountKey.json
+serviceAccountKey.json
  
 logs/
