@@ -1,5 +1,7 @@
 import admin from 'firebase-admin';
 import path from "path";
+import { getFirestore, Firestore } from 'firebase-admin/firestore';
+import { getAuth, Auth } from "firebase-admin/auth";
 
 const serviceAccountPath = path.resolve(__dirname, '../serviceAccountKey.json');
 
@@ -9,4 +11,8 @@ if(!admin.apps.length) {
     })
 }
 
-export const db = admin.firestore();
+const db: Firestore = getFirestore();
+
+const auth: Auth = getAuth();
+
+export { auth, db };
